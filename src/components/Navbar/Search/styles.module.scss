@@ -1,0 +1,37 @@
+.search {
+  display: flex;
+}
+
+.input-search {
+  position: relative;
+  display: flex;
+  width: 500px;
+  height: 40px;
+  border-radius: 2px 0 0 2px;
+  padding: 2px 6px;
+  border: 1px solid black;
+}
+
+input {
+  padding: 1px 0;
+  outline: none;
+  width: 95%;
+}
+
+.keyboard {
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
+
+.search-btn {
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border: 1px solid;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

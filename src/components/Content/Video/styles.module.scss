@@ -1,0 +1,51 @@
+.container {
+  height: 280px;
+  min-width: 271px;
+  margin: 0 8px;
+  display: inline-block;
+
+  cursor: pointer;
+
+  .image {
+    height: 157px;
+    min-width: 271px;
+  }
+
+  .desr {
+    display: flex;
+
+    .avatar {
+      height: 36px;
+      width: 36px;
+      margin: 12px 12px 0 0;
+      border-radius: 50%;
+    }
+
+    .content {
+      //   padding-left: 24px;
+      width: 200px;
+
+      .title {
+        margin: 12px 0 6px 0;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: normal;
+        white-space: normal;
+        text-overflow: ellipsis;
+      }
+
+      .author,
+      .bottom {
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .bottom {
+        display: flex;
+      }
+    }
+  }
+}
+
+.a {
+  background-color: rgba(0, 0, 0, 0.1);
+}

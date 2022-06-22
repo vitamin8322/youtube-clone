@@ -1,0 +1,27 @@
+.container {
+  width: 1456px;
+  height: 56px;
+  padding: 0 16px;
+  // background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  font-size: 18px;
+}
+
+.end {
+  display: flex;
+
+  .icon {
+    width: 40px;
+  }
+
+  .user {
+    height: 32px;
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,32 @@
+.container {
+  min-width: 250px;
+  margin-right: 10px;
+
+  .bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    // width: 100px;
+    height: 1px;
+  }
+  .item {
+    width: 240px;
+    height: 40px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 55px;
+    }
+  }
+}
+
+.container:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+// .bottom:hover {
+//   overflow: scroll;
+// }
+
+// border bottom rgba(0, 0, 0, 0.1);

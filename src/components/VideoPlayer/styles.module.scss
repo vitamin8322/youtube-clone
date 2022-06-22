@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+
+  .left {
+    margin: 24px 24px 0 24px;
+
+    .info {
+      .title {
+        margin: 12px 0 6px 0;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: normal;
+        white-space: normal;
+        text-overflow: ellipsis;
+        height: 26px;
+        width: 100%;
+      }
+
+      .end {
+        display: flex;
+        height: 60px;
+        width: 1000px;
+        align-items: center;
+        align-content: space-between;
+        margin: 30px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        .view-time {
+          width: 550px;
+          height: 36px;
+          display: flex;
+          color: #606060;
+          align-items: center;
+        }
+
+        .info-like {
+          display: flex;
+          width: 100%;
+          align-items: flex-end;
+
+          .btn {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+          }
+          .like {
+            width: 80px;
+            cursor: pointer;
+          }
+
+          .dislike {
+            cursor: pointer;
+            width: 115px;
+          }
+
+          // .createVideo {
+          //   width: 140px;
+          // }
+        }
+      }
+    }
+
+    .info_channel {
+      display: flex;
+      width: 100%;
+
+      .channel_image {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+      }
+
+      .desc {
+        width: 650px;
+        margin-left: 20px;
+        margin-right: 100px;
+
+        .name_channel {
+          font-weight: 500;
+        }
+
+        .description {
+          margin-top: 20px;
+        }
+      }
+
+      .sub {
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+        height: 40px;
+
+        .btn-sub {
+          width: 100px;
+          height: 40px;
+          background-color: red;
+          text-align: center;
+          // margin: auto;
+          // align-items: center;
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 300px;
+  }
+}
