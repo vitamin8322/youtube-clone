@@ -10,6 +10,7 @@ import { BsThreeDots, BsBell } from "react-icons/bs";
 import classNames from "classnames/bind";
 import styles from "./styles.module.scss";
 import Content from "../Content/Content";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const VideoPlayer = () => {
@@ -54,10 +55,11 @@ const VideoPlayer = () => {
       const response = await axios.get(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet%2C%20statistics&id=${channelId}&key=AIzaSyDtmJY38XxFTXpLYiEcR297PH8sASGQ5qY`
       );
+      console.log(snippet.description);
 
       const channelImage = response.data.items[0].snippet.thumbnails.medium.url;
       const subs = response.data.items[0].statistics.subscriberCount;
-
+      const description = snippet.description;
       const title = snippet.title;
       const image = snippet.thumbnails.medium.url;
       const views = statistics.viewCount;
@@ -66,6 +68,7 @@ const VideoPlayer = () => {
       const likeCount = statistics.likeCount;
 
       videocard.push({
+        channelId,
         videoId,
         image,
         title,
@@ -75,29 +78,29 @@ const VideoPlayer = () => {
         channelImage,
         likeCount,
         subs,
+        description,
       });
 
       setVideos(videocard);
     }
   };
-  // console.log(videos);
 
   return (
     <div className={cx("container")}>
-      <div className={cx("left")}>
-        <iframe
-          width="980"
-          height="530"
-          src={`https://www.youtube.com/embed/${idVideo}`}
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+      {videos.map((item) => (
+        <div className={cx("left")} key={item.videoId}>
+          <iframe
+            width="980"
+            height="530"
+            src={`https://www.youtube.com/embed/${idVideo}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
 
-        <div className={cx("info")}>
-          {videos.map((item) => (
-            <div key={item.videoId}>
+          <div className={cx("info")}>
+            <div>
               <div className={cx("title")}>{item.title}</div>
               <div className={cx("end")}>
                 <div className={cx("view-time")}>
@@ -131,35 +134,31 @@ const VideoPlayer = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div className={cx()}>
-          {videos.map((item) => (
-            <div className={cx("info_channel")}>
-              <img
-                className={cx("channel_image")}
-                src={item.channelImage}
-                alt={item.channelTitle}
-              />
-              <div className={cx("desc")}>
-                <div className={cx("name_channel")}>{item.channel}</div>
-                <div>{item.subs} người đăng ký</div>
-                <div className={cx("description")}>
-                  With all advanced Social Media features, such as Google
-                  Authentication, create, edit, delete and save posts, like and
-                  comment on other people's posts, search and filter images and
-                  much more, ShareMe is the best Image Sharing Social Media App
-                  that you can currently find on YouTub
+          </div>
+          <div className={cx()}>
+            {videos.map((item) => (
+              <div className={cx("info_channel")}>
+                <Link to={`/channel/${item.channelId}`}>
+                  <img
+                    className={cx("channel_image")}
+                    src={item.channelImage}
+                    alt={item.channelTitle}
+                  />
+                </Link>
+                <div className={cx("desc")}>
+                  <div className={cx("name_channel")}>{item.channel}</div>
+                  <div>{item.subs} người đăng ký</div>
+                  <div className={cx("description")}>{item.description}</div>
+                </div>
+                <div className={cx("sub")}>
+                  <div className={cx("btn-sub")}>Đăng ký</div>
+                  <BsBell fontSize={24} />
                 </div>
               </div>
-              <div className={cx("sub")}>
-                <div className={cx("btn-sub")}>Đăng ký</div>
-                <BsBell fontSize={24} />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ))}
       <div className={cx("right")}>
         <Content />
       </div>

@@ -95,8 +95,10 @@
           height: 40px;
           background-color: red;
           text-align: center;
-          // margin: auto;
-          // align-items: center;
+          display: flex;
+          margin: auto;
+          align-items: center;
+          justify-content: center;
         }
       }
     }

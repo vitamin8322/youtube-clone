@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import ResultSearch from "./components/ResultSearch/ResultSearch";
+import Channel from "./components/Channel/Channel";
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
       <Routes>
         <Route path="/search/:value" element={<ResultSearch />} />
       </Routes>
+      <Routes>
+        <Route path="/channel/:channelId" element={<Channel />} />
+      </Routes>
     </Router>
   );
 };
@@ -31,3 +35,5 @@ export default App;
 // AIzaSyBz6DPYH43Ph-nP7GeER2LoXjtGgfBMh90
 // AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510
 // AIzaSyDtmJY38XxFTXpLYiEcR297PH8sASGQ5qY
+
+// AIzaSyBJojFRjGO1aftLLWfuBDF5ZyYpWANcp8A

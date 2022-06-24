@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+
+  .list-videos {
+    padding-left: 73px;
+    background-color: #f1f1f1;
+  }
+
+  .list {
+    display: inline-block;
+    width: 210px;
+    height: 210px;
+    margin: 0 4px 24px 0;
+
+    .video {
+      display: grid;
+
+      .image {
+        height: 118px;
+      }
+
+      .detail {
+        height: 72px;
+        padding-right: 24px;
+      }
+
+      .title {
+        margin: 8px 0;
+        max-height: 4rem;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        font-weight: bold;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
+      .timeline {
+        color: #909090;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}

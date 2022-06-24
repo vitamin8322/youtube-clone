@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
 import axios from "axios";
@@ -8,7 +9,6 @@ import Sidebar from "../Sidebar/Sidebar";
 
 import classNames from "classnames/bind";
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const ResultSearch = () => {
@@ -20,23 +20,16 @@ const ResultSearch = () => {
   // const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    // setChannelRow("");
-    // setVideoRows([]);
-    axios({
-      method: "GET",
-      url: "https://www.googleapis.com/youtube/v3/search",
-      params: {
-        part: "snippet",
-        maxResults: 1,
-        q: value,
-        key: "AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510",
-      },
-    }).then((response) => {
-      // console.log("a");
-      // console.log(response);
-      createChannelRow(response.data["items"][0]);
-      // console.log("channelRow", channelRow);
-    });
+    setChannelRow("");
+    setVideoRows([]);
+    axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&type=channel&q=${value}&safeSearch=none&key=AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510`
+      )
+      .then((response) => {
+        console.log(response.data);
+        createChannelRow(response.data["items"][0]);
+      });
 
     // console.log("channelRow", channelRow);
 
@@ -65,21 +58,9 @@ const ResultSearch = () => {
 
   async function createChannelRow(channel) {
     const channelId = channel.id.channelId;
-    // const response = await axios.get(
-    //   `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510`
-    // );
-
-    const response = await axios({
-      method: "GET",
-      url: "https://www.googleapis.com/youtube/v3/channels",
-      params: {
-        part: "statistics",
-        id: channelId,
-        key: "AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510",
-        // type: "video",
-      },
-    });
-
+    const response = await axios.get(
+      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510`
+    );
     const noOfVideos = response.data.items[0].statistics.videoCount;
     const subs = response.data.items[0].statistics.subscriberCount;
     const snippet = channel.snippet;
@@ -100,20 +81,9 @@ const ResultSearch = () => {
     let newVideoRows = [];
     for (const video of videos) {
       const videoId = video.id.videoId;
-      // const response = await axios.get(
-      //   `https://www.googleapis.com/youtube/v3/videos?part=statistics%2C%20snippet&id=${videoId}&key=AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510`
-      // );
-      const response = await axios({
-        method: "GET",
-        url: "https://www.googleapis.com/youtube/v3/videos",
-        params: {
-          part: "snippet, statistics",
-          id: videoId,
-          key: "AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510",
-
-          // type: "video",
-        },
-      });
+      const response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/videos?part=statistics%2C%20snippet&id=${videoId}&key=AIzaSyA_V6e16LlaK7sijU9M18UV3BOq26QJ510`
+      );
 
       const views = response.data.items[0].statistics.viewCount;
 
@@ -137,9 +107,8 @@ const ResultSearch = () => {
       });
     }
     setVideoRows(newVideoRows);
-    // setIsLoading(false);
   }
-  console.log("videoRow", videoRows);
+  console.log("channelRow", channelRow);
 
   return (
     <div className={cx("container")}>
