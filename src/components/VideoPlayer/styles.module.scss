@@ -2,7 +2,8 @@
   display: flex;
 
   .left {
-    margin: 24px 24px 0 24px;
+    width: 75%;
+    margin: 24px 24px 0 40px;
 
     .info {
       .title {
@@ -105,6 +106,6 @@
   }
 
   .right {
-    width: 300px;
+    width: 25%;
   }
 }

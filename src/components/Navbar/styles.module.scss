@@ -1,21 +1,31 @@
 .container {
   width: 1456px;
   height: 56px;
-  padding: 0 16px;
+  padding: 0 20px;
   // background-color: red;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
+.begin {
   display: flex;
   font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  width: 10%;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.end {
+.user-login {
   display: flex;
-
+  justify-content: center;
+  align-items: center;
   .icon,
   .user,
   .more,
@@ -36,12 +46,52 @@
     border-radius: 50%;
   }
 
-  .more {
-    padding: 8px;
-    margin-right: 8px;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
+  .dropdown {
+    // display: none;
+    background-color: rgba(255, 255, 255, 0.98);
+    outline: none;
+    box-sizing: border-box;
+    width: 300px;
+    max-height: 700px;
+    position: fixed;
+    overflow: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+    left: 1137px;
+    top: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+
+    .header {
+      display: flex;
+      padding: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      .user-image {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 16px;
+        overflow: hidden;
+      }
+    }
+
+    .content {
+      background-color: transparent;
+
+      .item {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        // justify-content: center;
+        cursor: pointer;
+      }
+
+      .item:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
   }
 
   .signin {
@@ -54,4 +104,17 @@
     border: 1px solid #065fd4;
     color: #065fd4;
   }
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid blue;
+  padding: 10px;
+  color: #065fd4;
+}
+
+.show {
+  display: block;
 }
